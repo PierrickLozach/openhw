@@ -207,19 +207,19 @@ export default function OpenHW() {
               <div className="text-4xl">🔓</div>
               <div>
                 <h1 className="text-3xl font-bold text-white">OpenHW</h1>
-                <p className="text-purple-300">Libère ton hardware. Possède vraiment ce que tu achètes.</p>
+                <p className="text-purple-300">Liberate your hardware. Actually own what you buy.</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="text-right text-sm">
-                <div className="text-white font-medium">{devices.filter(d => d.status === 'liberated').length} appareils libérés</div>
-                <div className="text-purple-300">~$2,400 de valeur débloquée</div>
+                <div className="text-white font-medium">{devices.filter(d => d.status === 'liberated').length} devices liberated</div>
+                <div className="text-purple-300">~$2,400 in unlocked value</div>
               </div>
               <button
                 onClick={() => setShowContribute(true)}
                 className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-medium transition-colors"
               >
-                + Ajouter un guide
+                + Add a guide
               </button>
             </div>
           </div>
@@ -232,7 +232,7 @@ export default function OpenHW() {
           <div className="flex-1">
             <input
               type="text"
-              placeholder="Rechercher un appareil (AirPods, Kindle, Tesla...)"
+              placeholder="Search for a device (AirPods, Kindle, Tesla...)"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50 focus:outline-none focus:border-purple-500"
@@ -258,10 +258,10 @@ export default function OpenHW() {
         {/* Stats Banner */}
         <div className="grid grid-cols-4 gap-4 mb-8">
           {[
-            { label: 'Appareils documentés', value: '127', icon: '📱' },
-            { label: 'Guides de libération', value: '89', icon: '📖' },
-            { label: 'Contributeurs', value: '2.4k', icon: '👥' },
-            { label: 'Valeur débloquée', value: '$12M+', icon: '💰' }
+            { label: 'Documented devices', value: '127', icon: '📱' },
+            { label: 'Liberation guides', value: '89', icon: '📖' },
+            { label: 'Contributors', value: '2.4k', icon: '👥' },
+            { label: 'Unlocked value', value: '$12M+', icon: '💰' }
           ].map((stat, i) => (
             <div key={i} className="bg-white/5 border border-white/10 rounded-xl p-4 text-center">
               <div className="text-2xl mb-1">{stat.icon}</div>
@@ -292,14 +292,14 @@ export default function OpenHW() {
                   device.status === 'unlocking' ? 'bg-yellow-500/20 text-yellow-400' :
                   'bg-red-500/20 text-red-400'
                 }`}>
-                  {device.status === 'liberated' ? '✓ Libéré' :
-                   device.status === 'unlocking' ? '⏳ En cours...' :
-                   '🔒 Verrouillé'}
+                  {device.status === 'liberated' ? '✓ Liberated' :
+                   device.status === 'unlocking' ? '⏳ In progress...' :
+                   '🔒 Locked'}
                 </div>
               </div>
 
               <div className="mb-4">
-                <div className="text-xs text-white/40 mb-2">Fonctionnalités à débloquer :</div>
+                <div className="text-xs text-white/40 mb-2">Features to unlock:</div>
                 <div className="flex flex-wrap gap-1">
                   {device.liberatedFeatures.slice(0, 3).map((f, i) => (
                     <span key={i} className="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs">
@@ -317,8 +317,8 @@ export default function OpenHW() {
               {device.guide && (
                 <div className="flex items-center justify-between text-sm">
                   <span className={`px-2 py-1 rounded text-xs font-medium ${getDifficultyColor(device.guide.difficulty)}`}>
-                    {device.guide.difficulty === 'easy' ? 'Facile' :
-                     device.guide.difficulty === 'medium' ? 'Moyen' : 'Difficile'}
+                    {device.guide.difficulty === 'easy' ? 'Easy' :
+                     device.guide.difficulty === 'medium' ? 'Medium' : 'Hard'}
                   </span>
                   <span className="text-white/50">⏱ {device.guide.time}</span>
                 </div>
@@ -337,7 +337,7 @@ export default function OpenHW() {
                 <div>
                   <div className="text-sm text-purple-400 font-medium">{selectedDevice.brand} • {selectedDevice.category}</div>
                   <h2 className="text-2xl font-bold text-white mt-1">{selectedDevice.name}</h2>
-                  <p className="text-white/60 mt-1">Écosystème original : {selectedDevice.originalEcosystem}</p>
+                  <p className="text-white/60 mt-1">Original ecosystem: {selectedDevice.originalEcosystem}</p>
                 </div>
                 <button onClick={() => setSelectedDevice(null)} className="text-white/50 hover:text-white text-2xl">×</button>
               </div>
@@ -346,7 +346,7 @@ export default function OpenHW() {
             <div className="p-6">
               {/* Features to unlock */}
               <div className="mb-6">
-                <h3 className="text-lg font-semibold text-white mb-3">🎁 Ce que tu débloques</h3>
+                <h3 className="text-lg font-semibold text-white mb-3">🎁 What you unlock</h3>
                 <div className="grid grid-cols-2 gap-2">
                   {selectedDevice.liberatedFeatures.map((feature, i) => (
                     <div key={i} className="flex items-center gap-2 p-3 bg-green-500/10 border border-green-500/20 rounded-lg">
@@ -361,11 +361,11 @@ export default function OpenHW() {
               {selectedDevice.guide && (
                 <>
                   <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-3">📖 Guide de libération</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">📖 Liberation guide</h3>
                     <div className="flex gap-4 mb-4">
                       <div className={`px-3 py-1 rounded-lg text-sm font-medium ${getDifficultyColor(selectedDevice.guide.difficulty)}`}>
-                        Difficulté : {selectedDevice.guide.difficulty === 'easy' ? 'Facile' :
-                                     selectedDevice.guide.difficulty === 'medium' ? 'Moyenne' : 'Difficile'}
+                        Difficulty: {selectedDevice.guide.difficulty === 'easy' ? 'Easy' :
+                                     selectedDevice.guide.difficulty === 'medium' ? 'Medium' : 'Hard'}
                       </div>
                       <div className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-lg text-sm font-medium">
                         ⏱ {selectedDevice.guide.time}
@@ -373,7 +373,7 @@ export default function OpenHW() {
                     </div>
 
                     <div className="mb-4">
-                      <div className="text-sm text-white/60 mb-2">Outils nécessaires :</div>
+                      <div className="text-sm text-white/60 mb-2">Required tools:</div>
                       <div className="flex flex-wrap gap-2">
                         {selectedDevice.guide.tools.map((tool, i) => (
                           <span key={i} className="px-3 py-1 bg-white/10 text-white rounded-lg text-sm">{tool}</span>
@@ -395,7 +395,7 @@ export default function OpenHW() {
 
                   {/* Risks */}
                   <div className="mb-6">
-                    <h3 className="text-lg font-semibold text-white mb-3">⚠️ Risques à connaître</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">⚠️ Risks to know</h3>
                     <div className="space-y-2">
                       {selectedDevice.guide.risks.map((risk, i) => (
                         <div key={i} className="flex items-center gap-2 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
@@ -420,9 +420,9 @@ export default function OpenHW() {
                     : 'bg-green-500/20 text-green-400'
                 }`}
               >
-                {selectedDevice.status === 'locked' ? '🔓 Commencer la libération' :
-                 selectedDevice.status === 'unlocking' ? '⏳ Libération en cours...' :
-                 '✓ Appareil libéré !'}
+                {selectedDevice.status === 'locked' ? '🔓 Start liberation' :
+                 selectedDevice.status === 'unlocking' ? '⏳ Liberation in progress...' :
+                 '✓ Device liberated!'}
               </button>
             </div>
           </div>
@@ -433,32 +433,32 @@ export default function OpenHW() {
       {showContribute && (
         <div className="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50" onClick={() => setShowContribute(false)}>
           <div className="bg-slate-900 border border-white/20 rounded-2xl max-w-lg w-full p-6" onClick={e => e.stopPropagation()}>
-            <h2 className="text-2xl font-bold text-white mb-4">📝 Contribuer un guide</h2>
+            <h2 className="text-2xl font-bold text-white mb-4">📝 Contribute a guide</h2>
             <p className="text-white/60 mb-6">
-              Tu as libéré un appareil qui n&apos;est pas encore documenté ? Partage ton savoir avec la communauté !
+              Have you liberated a device that&apos;s not documented yet? Share your knowledge with the community!
             </p>
             <form className="space-y-4">
               <input
                 type="text"
-                placeholder="Nom de l'appareil"
+                placeholder="Device name"
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50"
               />
               <input
                 type="text"
-                placeholder="Marque"
+                placeholder="Brand"
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50"
               />
               <textarea
-                placeholder="Étapes de libération..."
+                placeholder="Liberation steps..."
                 rows={4}
                 className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-white/50"
               />
               <div className="flex gap-3">
                 <button type="button" onClick={() => setShowContribute(false)} className="flex-1 py-3 bg-white/10 text-white rounded-xl font-medium">
-                  Annuler
+                  Cancel
                 </button>
                 <button type="submit" className="flex-1 py-3 bg-purple-600 text-white rounded-xl font-medium">
-                  Soumettre
+                  Submit
                 </button>
               </div>
             </form>
